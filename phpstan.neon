@@ -1,0 +1,8 @@
+parameters:
+    level: 8
+    paths:
+        - src
+    tmpDir: .phpstan
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - identifier: trait.unused

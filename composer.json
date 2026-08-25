@@ -1,0 +1,115 @@
+{
+    "name": "openyam/hyperf-excel",
+    "description": "A concern-driven Excel import and export package for Hyperf 3.1.",
+    "keywords": ["hyperf", "excel", "spreadsheet", "csv", "import", "export"],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "OpenYam"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-ctype": "*",
+        "ext-dom": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-mbstring": "*",
+        "ext-simplexml": "*",
+        "ext-xml": "*",
+        "ext-xmlreader": "*",
+        "ext-xmlwriter": "*",
+        "ext-zip": "*",
+        "ext-zlib": "*",
+        "hyperf/async-queue": "~3.1.0",
+        "hyperf/collection": "~3.1.0",
+        "hyperf/config": "~3.1.0",
+        "hyperf/contract": "~3.1.0",
+        "hyperf/database": "~3.1.0",
+        "hyperf/db-connection": "~3.1.0",
+        "hyperf/di": "~3.1.0",
+        "hyperf/event": "~3.1.0",
+        "hyperf/filesystem": "~3.1.0",
+        "hyperf/http-message": "~3.1.0",
+        "hyperf/http-server": "~3.1.0",
+        "hyperf/validation": "~3.1.0",
+        "hyperf/view": "~3.1.0",
+        "phpoffice/phpspreadsheet": "^3.10.7 || ^5.9.0",
+        "psr/container": "^1.1 || ^2.0",
+        "psr/event-dispatcher": "^1.0",
+        "psr/http-message": "^1.0 || ^2.0"
+    },
+    "require-dev": {
+        "dompdf/dompdf": "^2.0 || ^3.0",
+        "friendsofphp/php-cs-fixer": "^3.80",
+        "mockery/mockery": "^1.6",
+        "phpstan/phpstan": "^1.12 || ^2.0",
+        "phpunit/phpunit": "^10.5"
+    },
+    "suggest": {
+        "dompdf/dompdf": "Use the Dompdf renderer for PDF exports.",
+        "mpdf/mpdf": "Use the mPDF renderer for PDF exports.",
+        "tecnickcom/tcpdf": "Use the TCPDF renderer for PDF exports."
+    },
+    "autoload": {
+        "psr-4": {
+            "OpenYam\\HyperfExcel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OpenYam\\HyperfExcel\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "hyperf": {
+            "config": "OpenYam\\HyperfExcel\\ConfigProvider"
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/.gitattributes",
+            "/.github",
+            "/.gitignore",
+            "/.php-cs-fixer.cache",
+            "/.php-cs-fixer.dist.php",
+            "/.phpstan",
+            "/.phpunit.cache",
+            "/benchmarks",
+            "/composer.lock",
+            "/CONTRIBUTING.md",
+            "/coverage",
+            "/coverage-baseline.json",
+            "/phpstan.neon",
+            "/phpunit.xml",
+            "/tests",
+            "/tools",
+            "/vendor"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit",
+        "coverage": "phpunit --coverage-clover=.phpunit.cache/coverage.xml",
+        "coverage-check": [
+            "@coverage",
+            "@php tools/check-coverage.php .phpunit.cache/coverage.xml coverage-baseline.json"
+        ],
+        "analyse": "phpstan analyse --debug --memory-limit=-1",
+        "benchmark": "@php -d memory_limit=-1 benchmarks/benchmark.php",
+        "benchmark-quick": "@php -d memory_limit=-1 benchmarks/benchmark.php 5000 10 1 all",
+        "cs-check": "php-cs-fixer fix --dry-run --diff --sequential",
+        "cs-fix": "php-cs-fixer fix"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
