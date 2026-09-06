@@ -24,7 +24,7 @@ final class ExcelFactory
     public function __invoke(ContainerInterface $container): Excel
     {
         $config = $container->get(ConfigInterface::class)->get('excel', []);
-        $fallback = (defined('BASE_PATH') ? BASE_PATH : sys_get_temp_dir()) . '/runtime/container/hyperf-excel';
+        $fallback = (defined('BASE_PATH') ? BASE_PATH : sys_get_temp_dir()) . '/runtime/temp/hyperf-excel';
         $temporaryFiles = new TemporaryFileManager((string) ($config['temporary_path'] ?? $fallback));
         $files = new FileResolver($temporaryFiles, $container->get(FilesystemFactory::class), $config['security'] ?? []);
         $events = new EventBus($container->get(EventDispatcherInterface::class));

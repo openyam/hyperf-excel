@@ -5,7 +5,7 @@ declare(strict_types=1);
 use OpenYam\HyperfExcel\Excel;
 
 return [
-    'temporary_path' => BASE_PATH . '/runtime/container/hyperf-excel',
+    'temporary_path' => BASE_PATH . '/runtime/temp/hyperf-excel',
     'chunk_size' => 1000,
     'read_batch_size' => 1000,
     'transaction' => [
